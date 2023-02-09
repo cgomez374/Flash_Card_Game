@@ -31,6 +31,7 @@ def flip_card():
         canvas.itemconfig(french_word, state='normal')
 
 
+# Resets cards to starting position
 def reset_cards():
     get_words()
     flip_card()
@@ -39,6 +40,7 @@ def reset_cards():
     set_timer()
 
 
+# Removes known words from both word lists
 def update_list():
     cancel_timer()
     i_know_this_word(canvas.itemcget(french_word, 'text'), canvas.itemcget(english_word, 'text'))
@@ -50,17 +52,19 @@ def update_list():
         set_timer()
 
 
+# Function to set the timer
 def set_timer():
     global timer
     timer = window.after(3000, flip_card)
 
 
+# Function to stop the timer
 def cancel_timer():
     global timer
     window.after_cancel(timer)
 
 
-# UI
+# User Interface of the Game
 
 window = tkinter.Tk()
 window.title('Flashcard Game')
@@ -89,11 +93,11 @@ get_words()
 
 # Buttons
 
-right_button = tkinter.Button(image=right_btn_img, bg=BACKGROUND_COLOR, highlightthickness=0, command=update_list)
-wrong_button = tkinter.Button(image=wrong_btn_img, bg=BACKGROUND_COLOR, highlightthickness=0, command=reset_cards)
+known_button = tkinter.Button(image=right_btn_img, bg=BACKGROUND_COLOR, highlightthickness=0, command=update_list)
+unknown_button = tkinter.Button(image=wrong_btn_img, bg=BACKGROUND_COLOR, highlightthickness=0, command=reset_cards)
 
-right_button.grid(row=1, column=0)
-wrong_button.grid(row=1, column=1)
+known_button.grid(row=1, column=0)
+unknown_button.grid(row=1, column=1)
 
 # Timer will flip cards after 3 seconds
 
