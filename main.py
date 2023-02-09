@@ -1,5 +1,5 @@
 import tkinter
-from actions import *
+from reader import *
 BACKGROUND_COLOR = "#B1DDC6"
 TITLE_FONT = ('Ariel', 40, 'italic')
 WORD_FONT = ('Ariel', 60, 'bold')
@@ -58,6 +58,7 @@ def set_timer():
 def cancel_timer():
     global timer
     window.after_cancel(timer)
+
 
 # UI
 
